@@ -10,8 +10,8 @@
     "react": "^18"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/core-config-eslint": "workspace:*",
+    "@repo/core-config-typescript": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:react18",
     "autoprefixer": "^10",

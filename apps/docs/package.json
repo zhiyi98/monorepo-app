@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.2.8",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/core-config-eslint": "workspace:*",
+    "@repo/core-config-typescript": "workspace:*",
     "@types/eslint": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:react18",

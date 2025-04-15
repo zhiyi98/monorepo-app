@@ -11,8 +11,8 @@
     "ui": "pnpm --filter @repo/core-shadcn-ui ui"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/core-config-eslint": "workspace:*",
+    "@repo/core-config-typescript": "workspace:*",
     "prettier": "catalog:",
     "turbo": "2.1.1"
   },
