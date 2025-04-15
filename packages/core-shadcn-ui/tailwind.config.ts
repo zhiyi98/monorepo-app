@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+// @ts-ignore
 import tailwindcssAnimate from "tailwindcss-animate";
 
 const config = {
@@ -8,7 +9,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "../../packages/ui/src/**/*.{ts,tsx}",
+    "../../packages/core-shadcn-ui/src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {

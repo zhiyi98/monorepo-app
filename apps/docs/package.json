@@ -9,7 +9,7 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@repo/core-shadcn-ui": "workspace:*",
     "next": "14.2.8",
     "react": "catalog:react18",
     "react-dom": "catalog:react18"

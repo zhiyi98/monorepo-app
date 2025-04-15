@@ -1,4 +1,4 @@
-import "@repo/ui/globals.css";
+import "@repo/core-shadcn-ui/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
