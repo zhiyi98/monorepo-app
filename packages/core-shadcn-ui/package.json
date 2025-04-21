@@ -21,10 +21,19 @@
     "typescript": "catalog:"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.7",
+    "@radix-ui/react-alert-dialog": "^1.1.10",
+    "@radix-ui/react-aspect-ratio": "^1.1.4",
+    "@radix-ui/react-avatar": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.4",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "catalog:",
+    "react-day-picker": "8.10.1",
+    "recharts": "^2.15.3",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },
