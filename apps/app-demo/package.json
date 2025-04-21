@@ -15,9 +15,9 @@
     "react-dom": "catalog:react18"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "14.2.8",
     "@repo/core-config-eslint": "workspace:*",
     "@repo/core-config-typescript": "workspace:*",
+    "@next/eslint-plugin-next": "14.2.8",
     "@types/eslint": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:react18",
