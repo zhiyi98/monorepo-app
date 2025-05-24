@@ -9,8 +9,7 @@
     "test": "pnpm run -r test"
   },
   "devDependencies": {
-    "@repo/core-config-typescript": "workspace:*",
-    "prettier": "catalog:"
+    "@repo/core-config-typescript": "workspace:*"
   },
   "packageManager": "pnpm@9.12.0",
   "engines": {
