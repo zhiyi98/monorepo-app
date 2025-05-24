@@ -11,6 +11,11 @@ catalog:
   "@types/react-dom": "^18.3.0"
   "next": "14.2.8"
 
+  # Supabase
+  "@supabase/auth-helpers-react": "^0.3.1"
+  "@supabase/auth-ui-react": "^0.2.8"
+  "@supabase/supabase-js": "^2.8.0"
+
   # Build Tools
   "typescript": "^5.6.3"
   "@types/node": "^20"
@@ -67,6 +72,7 @@ catalog:
   "recharts": "^2.15.3"
   "sonner": "^2.0.3"
   "vaul": "^1.1.2"
+  "@next/font": "13.1.6"
 
   # Utilities
   "date-fns": "^4.1.0"
