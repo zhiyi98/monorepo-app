@@ -1,7 +1,7 @@
 'use client'
 
-import { Database } from '@/lib/schema'
-import {createClient} from "@/utils/supabase/component";
+import { Database } from '~/lib/schema'
+import {createClient} from "~/utils/supabase/component";
 import { useEffect, useState } from 'react'
 
 type Todos = Database['public']['Tables']['todos']['Row']

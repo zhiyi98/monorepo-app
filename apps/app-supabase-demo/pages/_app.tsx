@@ -1,4 +1,4 @@
-import '@/styles/app.css'
+import "@repo/core-shadcn-ui/globals.css";
 import type {AppProps} from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
