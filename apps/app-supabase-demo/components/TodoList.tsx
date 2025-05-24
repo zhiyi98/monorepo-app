@@ -1,11 +1,13 @@
+'use client'
+
 import { Database } from '@/lib/schema'
-import { Session, useSupabaseClient } from '@supabase/auth-helpers-react'
+import {createClient} from "@/utils/supabase/component";
 import { useEffect, useState } from 'react'
 
 type Todos = Database['public']['Tables']['todos']['Row']
 
-export default function TodoList({ session }: { session: Session }) {
-  const supabase = useSupabaseClient<Database>()
+export default function TodoList({ session }: { session: any }) {
+  const supabase = createClient()
   const [todos, setTodos] = useState<Todos[]>([])
   const [newTaskText, setNewTaskText] = useState('')
   const [errorText, setErrorText] = useState('')
@@ -90,7 +92,7 @@ export default function TodoList({ session }: { session: Session }) {
 }
 
 const Todo = ({ todo, onDelete }: { todo: Todos; onDelete: () => void }) => {
-  const supabase = useSupabaseClient<Database>()
+  const supabase = createClient()
   const [isCompleted, setIsCompleted] = useState(todo.is_complete)
 
   const toggle = async () => {

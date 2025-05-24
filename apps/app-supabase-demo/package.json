@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "@next/font": "catalog:",
-    "@supabase/auth-helpers-react": "catalog:",
     "@supabase/auth-ui-react": "catalog:",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
