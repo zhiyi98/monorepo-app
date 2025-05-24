@@ -42,7 +42,7 @@ export default function Home() {
                 <span className="font-sans text-4xl text-center pb-2 mb-1 border-b mx-4 align-center">
                   Login
                 </span>
-                <Auth supabaseClient={supabase} appearance={{theme: ThemeSupa}} theme="dark"/>
+                <Auth supabaseClient={supabase} appearance={{theme: ThemeSupa}} theme="default"/>
               </div>
             </div>
           </div>
