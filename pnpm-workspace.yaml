@@ -19,6 +19,7 @@ catalog:
   # Build Tools
   "typescript": "^5.6.3"
   "@types/node": "^20"
+  "concurrently": "^7.6.0"
 
   # CSS & Styling
   "tailwindcss": "^3.4.13"
