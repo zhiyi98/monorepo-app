@@ -7,6 +7,8 @@ import {useEffect, useState} from 'react'
 import {Session} from "@supabase/supabase-js";
 import {createClient} from "~/utils/supabase/component";
 import BooksPage from "~/pages/books/books-page";
+import {Button} from "@repo/core-shadcn-ui/components/ui/button";
+import {CardTitle} from "@repo/core-shadcn-ui/components/ui/card";
 
 export default function Home() {
   const [session, setSession] = useState<Session | null>(null)
@@ -39,9 +41,7 @@ export default function Home() {
           <div className="min-w-full min-h-screen flex items-center justify-center">
             <div className="w-full h-full flex justify-center items-center p-4">
               <div className="w-full h-full sm:h-auto sm:w-2/5 max-w-sm p-5 bg-white shadow flex flex-col text-base">
-                <span className="font-sans text-4xl text-center pb-2 mb-1 border-b mx-4 align-center">
-                  Login
-                </span>
+                <CardTitle className="text-2xl text-center">Login</CardTitle>
                 <Auth supabaseClient={supabase} appearance={{theme: ThemeSupa}} theme="default"/>
               </div>
             </div>
@@ -52,15 +52,15 @@ export default function Home() {
             style={{minWidth: 250, maxWidth: 600, margin: 'auto'}}
           >
             <BooksPage/>
-            <button
-              className="btn-black w-full mt-12"
+            <Button
+              className="btn-black mt-12"
               onClick={async () => {
                 const {error} = await supabase.auth.signOut()
                 if (error) console.log('Error logging out:', error.message)
               }}
             >
               Logout
-            </button>
+            </Button>
           </div>
         )}
       </div>

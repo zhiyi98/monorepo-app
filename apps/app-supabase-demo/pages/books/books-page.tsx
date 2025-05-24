@@ -1,4 +1,3 @@
-// app/books/books-page.tsx
 'use client'
 
 import {useEffect, useState} from 'react'
@@ -22,7 +21,6 @@ import {
 } from '@repo/core-shadcn-ui/components/ui/dialog'
 import {createClient} from "~/utils/supabase/component";
 
-// 增强样式变量
 const styles = {
   container: 'max-w-6xl mx-auto p-6 space-y-6',
   header: 'flex justify-between items-center',
@@ -38,7 +36,6 @@ const styles = {
   tableRow: 'hover:bg-accent/50 transition-colors'
 }
 
-// 类型定义
 type Book = {
   id: string
   title: string
@@ -50,21 +47,24 @@ type Book = {
 
 export default function BooksPage() {
   const supabase = createClient()
-  // const { toast } = useToast()
   const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
-  const [openDialog, setOpenDialog] = useState(false)
+  const [openAddDialog, setOpenAddDialog] = useState(false)
+  const [openEditDialog, setOpenEditDialog] = useState(false)
   const [currentBook, setCurrentBook] = useState<Book | null>(null)
 
-  const [formData, setFormData] = useState({
+  // 初始化表单数据
+  const initialFormData = {
     title: '',
     author: '',
     isbn: '',
     published_year: new Date().getFullYear()
-  })
+  }
+  const [addFormData, setAddFormData] = useState(initialFormData)
+  const [editFormData, setEditFormData] = useState(initialFormData)
 
-  // 初始数据加载
+  // 数据加载
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -83,42 +83,53 @@ export default function BooksPage() {
     }
 
     fetchBooks()
-  }, [toast])
+  }, [])
 
-  // 提交处理
-  const handleSubmit = async () => {
-    if (!formData.title || !formData.author) {
-      return toast("加载失败")
+  // 新增提交
+  const handleAddSubmit = async () => {
+    if (!addFormData.title || !addFormData.author) {
+      return toast("请填写必填字段")
     }
 
     setSubmitting(true)
     try {
-      if (currentBook) {
-        // 更新操作
-        const {error} = await supabase
-          .from('books')
-          .update(formData)
-          .eq('id', currentBook.id)
+      const {data, error} = await supabase
+        .from('books')
+        .insert([addFormData])
+        .select()
+        .single()
 
-        if (error) throw error
-        setBooks(books.map(b => b.id === currentBook.id ? {...b, ...formData} : b))
-        toast("更新成功")
-      } else {
-        // 新增操作
-        const {data, error} = await supabase
-          .from('books')
-          .insert([formData])
-          .select()
-          .single()
-
-        if (error) throw error
-        setBooks([data, ...books])
-        toast("更新成功")
-      }
-      setOpenDialog(false)
-      resetForm()
+      if (error) throw error
+      setBooks([data, ...books])
+      toast("新增成功")
+      setOpenAddDialog(false)
+      setAddFormData(initialFormData)
     } catch (error) {
+      toast("新增失败")
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  // 编辑提交
+  const handleEditSubmit = async () => {
+    if (!currentBook?.id || !editFormData.title || !editFormData.author) {
+      return toast("请填写必填字段")
+    }
+
+    setSubmitting(true)
+    try {
+      const {error} = await supabase
+        .from('books')
+        .update(editFormData)
+        .eq('id', currentBook.id)
+
+      if (error) throw error
+      setBooks(books.map(b => b.id === currentBook.id ? {...b, ...editFormData} : b))
       toast("更新成功")
+      setOpenEditDialog(false)
+    } catch (error) {
+      toast("更新失败")
     } finally {
       setSubmitting(false)
     }
@@ -141,26 +152,15 @@ export default function BooksPage() {
   }
 
   // 打开编辑对话框
-  const openEditDialog = (book: Book) => {
+  const openEdit = (book: Book) => {
     setCurrentBook(book)
-    setFormData({
+    setEditFormData({
       title: book.title,
       author: book.author,
       isbn: book.isbn,
       published_year: book.published_year
     })
-    setOpenDialog(true)
-  }
-
-  // 重置表单
-  const resetForm = () => {
-    setCurrentBook(null)
-    setFormData({
-      title: '',
-      author: '',
-      isbn: '',
-      published_year: new Date().getFullYear()
-    })
+    setOpenEditDialog(true)
   }
 
   return (
@@ -170,7 +170,7 @@ export default function BooksPage() {
         <h1 className="text-3xl font-bold">图书管理</h1>
         <Button
           className={styles.button.primary}
-          onClick={() => setOpenDialog(true)}
+          onClick={() => setOpenAddDialog(true)}
         >
           新增图书
         </Button>
@@ -212,7 +212,7 @@ export default function BooksPage() {
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => openEditDialog(book)}
+                      onClick={() => openEdit(book)}
                     >
                       编辑
                     </Button>
@@ -231,38 +231,36 @@ export default function BooksPage() {
         </Table>
       </div>
 
-      {/* 新增/编辑对话框 */}
-      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+      {/* 新增对话框 */}
+      <Dialog open={openAddDialog} onOpenChange={setOpenAddDialog}>
         <DialogContent className={styles.dialog}>
           <DialogHeader>
-            <DialogTitle>
-              {currentBook ? '编辑图书' : '新增图书'}
-            </DialogTitle>
+            <DialogTitle>新增图书</DialogTitle>
           </DialogHeader>
 
           <div className={styles.inputGroup}>
             <Input
               placeholder="书名 *"
-              value={formData.title}
-              onChange={(e) => setFormData({...formData, title: e.target.value})}
+              value={addFormData.title}
+              onChange={(e) => setAddFormData({...addFormData, title: e.target.value})}
             />
             <Input
               placeholder="作者 *"
-              value={formData.author}
-              onChange={(e) => setFormData({...formData, author: e.target.value})}
+              value={addFormData.author}
+              onChange={(e) => setAddFormData({...addFormData, author: e.target.value})}
             />
             <Input
               placeholder="ISBN"
-              value={formData.isbn}
-              onChange={(e) => setFormData({...formData, isbn: e.target.value})}
+              value={addFormData.isbn}
+              onChange={(e) => setAddFormData({...addFormData, isbn: e.target.value})}
             />
             <Input
               type="number"
               placeholder="出版年份"
-              value={formData.published_year}
-              onChange={(e) => setFormData({
-                ...formData,
-                published_year: Number(e.target.value) || 2023
+              value={addFormData.published_year}
+              onChange={(e) => setAddFormData({
+                ...addFormData,
+                published_year: Number(e.target.value) || new Date().getFullYear()
               })}
             />
           </div>
@@ -270,17 +268,70 @@ export default function BooksPage() {
           <DialogFooter>
             <Button
               variant="outline"
-              onClick={() => setOpenDialog(false)}
+              onClick={() => setOpenAddDialog(false)}
               disabled={submitting}
             >
               取消
             </Button>
             <Button
               className={submitting ? styles.button.disabled : styles.button.primary}
-              onClick={handleSubmit}
+              onClick={handleAddSubmit}
               disabled={submitting}
             >
-              {submitting ? '处理中...' : currentBook ? '保存修改' : '创建图书'}
+              {submitting ? '提交中...' : '创建图书'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* 编辑对话框 */}
+      <Dialog open={openEditDialog} onOpenChange={setOpenEditDialog}>
+        <DialogContent className={styles.dialog}>
+          <DialogHeader>
+            <DialogTitle>编辑图书</DialogTitle>
+          </DialogHeader>
+
+          <div className={styles.inputGroup}>
+            <Input
+              placeholder="书名 *"
+              value={editFormData.title}
+              onChange={(e) => setEditFormData({...editFormData, title: e.target.value})}
+            />
+            <Input
+              placeholder="作者 *"
+              value={editFormData.author}
+              onChange={(e) => setEditFormData({...editFormData, author: e.target.value})}
+            />
+            <Input
+              placeholder="ISBN"
+              value={editFormData.isbn}
+              onChange={(e) => setEditFormData({...editFormData, isbn: e.target.value})}
+            />
+            <Input
+              type="number"
+              placeholder="出版年份"
+              value={editFormData.published_year}
+              onChange={(e) => setEditFormData({
+                ...editFormData,
+                published_year: Number(e.target.value) || new Date().getFullYear()
+              })}
+            />
+          </div>
+
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setOpenEditDialog(false)}
+              disabled={submitting}
+            >
+              取消
+            </Button>
+            <Button
+              className={submitting ? styles.button.disabled : styles.button.primary}
+              onClick={handleEditSubmit}
+              disabled={submitting}
+            >
+              {submitting ? '更新中...' : '保存修改'}
             </Button>
           </DialogFooter>
         </DialogContent>

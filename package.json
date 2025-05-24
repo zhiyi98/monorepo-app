@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "pnpm run -r clean",
     "build": "pnpm run -r build",
-    "test": "pnpm run -r test"
+    "test": "pnpm run -r test",
+    "outdated": "pnpm outdated"
   },
   "devDependencies": {
     "@repo/core-config-typescript": "workspace:*"
