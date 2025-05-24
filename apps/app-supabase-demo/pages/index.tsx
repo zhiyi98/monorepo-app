@@ -3,7 +3,6 @@
 import Head from 'next/head'
 import {Auth} from '@supabase/auth-ui-react'
 import {ThemeSupa} from '@supabase/auth-ui-shared'
-import TodoList from '~/components/todo-list'
 import {useEffect, useState} from 'react'
 import {Session} from "@supabase/supabase-js";
 import {createClient} from "~/utils/supabase/component";
@@ -52,9 +51,7 @@ export default function Home() {
             className="w-full h-full flex flex-col justify-center items-center p-4"
             style={{minWidth: 250, maxWidth: 600, margin: 'auto'}}
           >
-            {/*<TodoList session={session}/>*/}
-            <BooksPage session={session}/>
-
+            <BooksPage/>
             <button
               className="btn-black w-full mt-12"
               onClick={async () => {

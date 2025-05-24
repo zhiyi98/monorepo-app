@@ -22,9 +22,6 @@ import {
 } from '@repo/core-shadcn-ui/components/ui/dialog'
 import {createClient} from "~/utils/supabase/component";
 
-// 初始化 Supabase
-const supabase = createClient()
-
 // 增强样式变量
 const styles = {
   container: 'max-w-6xl mx-auto p-6 space-y-6',
@@ -51,11 +48,8 @@ type Book = {
   created_at: string
 }
 
-export default function BooksPage({
-  session
-}: {
-  session: any
-}) {
+export default function BooksPage() {
+  const supabase = createClient()
   // const { toast } = useToast()
   const [books, setBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState(true)
