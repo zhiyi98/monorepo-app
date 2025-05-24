@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev --port 3001",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint . --max-warnings 0"
+    "start": "next start"
   },
   "dependencies": {
     "@repo/core-shadcn-ui": "workspace:*",
@@ -15,15 +14,11 @@
     "react-dom": "catalog:react18"
   },
   "devDependencies": {
-    "@repo/core-config-eslint": "workspace:*",
     "@repo/core-config-typescript": "workspace:*",
-    "@next/eslint-plugin-next": "14.2.8",
-    "@types/eslint": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:react18",
     "@types/react-dom": "catalog:react18",
     "autoprefixer": "^10",
-    "eslint": "catalog:",
     "postcss": "^8",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
