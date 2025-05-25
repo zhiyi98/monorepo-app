@@ -9,7 +9,7 @@
     "outdated": "pnpm outdated"
   },
   "dependencies": {
-    "@repo/core-shadcn-ui": "workspace:*",
+    "@repo/core-ui-shadcn": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"

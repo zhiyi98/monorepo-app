@@ -7,8 +7,8 @@ import {useEffect, useState} from 'react'
 import {Session} from "@supabase/supabase-js";
 import {createClient} from "~/utils/supabase/component";
 import BooksPage from "~/pages/books/books-page";
-import {Button} from "@repo/core-shadcn-ui/components/ui/button";
-import {CardTitle} from "@repo/core-shadcn-ui/components/ui/card";
+import {Button} from "@repo/core-ui-shadcn/components/ui/button";
+import {CardTitle} from "@repo/core-ui-shadcn/components/ui/card";
 
 export default function Home() {
   const [session, setSession] = useState<Session | null>(null)

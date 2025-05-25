@@ -1,4 +1,4 @@
-import {LoginForm} from "@repo/core-shadcn-ui/components/login-form";
+import {LoginForm} from "@repo/core-ui-shadcn/components/login-form";
 
 export default function Page() {
   return (

@@ -10,7 +10,7 @@
     "outdated": "pnpm outdated"
   },
   "dependencies": {
-    "@repo/core-shadcn-ui": "workspace:*",
+    "@repo/core-ui-shadcn": "workspace:*",
     "@next/font": "catalog:",
     "@supabase/auth-ui-react": "catalog:",
     "@supabase/auth-ui-shared": "catalog:",

@@ -1,8 +1,8 @@
 'use client'
 
 import {useEffect, useState} from 'react'
-import {Button} from '@repo/core-shadcn-ui/components/ui/button'
-import {Input} from '@repo/core-shadcn-ui/components/ui/input'
+import {Button} from '@repo/core-ui-shadcn/components/ui/button'
+import {Input} from '@repo/core-ui-shadcn/components/ui/input'
 import {toast} from "sonner"
 import {
   Table,
@@ -11,14 +11,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@repo/core-shadcn-ui/components/ui/table'
+} from '@repo/core-ui-shadcn/components/ui/table'
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@repo/core-shadcn-ui/components/ui/dialog'
+} from '@repo/core-ui-shadcn/components/ui/dialog'
 import {createClient} from "~/utils/supabase/component";
 
 const styles = {
