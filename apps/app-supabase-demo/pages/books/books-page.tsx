@@ -19,7 +19,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@repo/core-ui-shadcn/components/ui/dialog'
-import {createClient} from "~/utils/supabase/component";
+import {createClient} from "@repo/core-supabase/utils/supabase/component";
 
 const styles = {
   container: 'max-w-6xl mx-auto p-6 space-y-6',

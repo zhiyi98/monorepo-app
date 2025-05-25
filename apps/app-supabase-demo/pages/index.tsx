@@ -5,7 +5,7 @@ import {Auth} from '@supabase/auth-ui-react'
 import {ThemeSupa} from '@supabase/auth-ui-shared'
 import {useEffect, useState} from 'react'
 import {Session} from "@supabase/supabase-js";
-import {createClient} from "~/utils/supabase/component";
+import {createClient} from "@repo/core-supabase/utils/supabase/component";
 import BooksPage from "~/pages/books/books-page";
 import {Button} from "@repo/core-ui-shadcn/components/ui/button";
 import {CardTitle} from "@repo/core-ui-shadcn/components/ui/card";

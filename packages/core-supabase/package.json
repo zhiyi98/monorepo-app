@@ -1,0 +1,19 @@
+{
+  "name": "@repo/core-supabase",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "outdated": "pnpm outdated"
+  },
+  "devDependencies": {
+    "@repo/core-config-typescript": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": "catalog:",
+    "typescript": "catalog:",
+    "@supabase/auth-ui-react": "catalog:",
+    "@supabase/auth-ui-shared": "catalog:",
+    "@supabase/ssr": "catalog:",
+    "@supabase/supabase-js": "catalog:"
+  }
+}

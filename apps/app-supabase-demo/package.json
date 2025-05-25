@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "@repo/core-ui-shadcn": "workspace:*",
-    "@next/font": "catalog:",
+    "@repo/core-supabase": "workspace:*",
     "@supabase/auth-ui-react": "catalog:",
     "@supabase/auth-ui-shared": "catalog:",
     "@supabase/ssr": "catalog:",
     "@supabase/supabase-js": "catalog:",
+    "@next/font": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
