@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-todo-list",
+  "name": "app-demo-supabase-nextjs-todo-list",
   "version": "0.0.0",
   "private": true,
   "scripts": {
